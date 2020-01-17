@@ -1,0 +1,54 @@
+body section {
+    margin: 0 50px 0 100px;
+    padding: 50px;
+}
+
+#Logotipo {
+    width: 10%;
+    margin: 0 0px 0 0;
+}
+
+#containercoco {
+    border-radius: 150px;
+}
+
+#navbarTogglerDemo01 a {
+    color: white;
+}
+
+#searchok {
+color: white;
+border-color: white;
+}
+
+#footer1 {
+    color: white;
+    background: #212529;
+    border-radius: 2px;
+    margin-top: 60px;
+}
+
+#footer2 {
+    color: white;
+    background: #212529;
+    border-radius: 2px;
+    margin-top: 241px;
+}
+
+#button1 {
+    border-radius: 0;
+}
+
+#button2 {
+    border-radius: 0;
+}
+#edt {
+text-decoration: none;
+}
+#del {
+text-decoration: none;
+}
+#titid {
+font-weight: normal;
+font-size: 14px;
+}

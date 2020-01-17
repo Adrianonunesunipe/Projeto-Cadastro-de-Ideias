@@ -1,0 +1,79 @@
+{% load static %}
+
+{% load bootstrap %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HELLO TICKET</title>
+
+     <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+     <link rel="stylesheet" href="{% static 'style/style.css'%}">
+
+</head>
+
+<body>
+
+       <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <img id='Logotipo' src="{% static 'imagem/hello-ticket.svg'%}" alt="imagem hello-ticket" width="10%">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                </li>
+            </ul>
+            <br><br><br>
+      </div>
+        </nav>
+    </header>
+
+<section class="aw-layout-content  js-content">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+       <div class="container">
+            <h1>Deseja deletar?</h1>
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.Nome|bootstrap }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.Sobrenome|bootstrap }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        {{ form.Nova_ideia|bootstrap }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        {{ form.Descricao|bootstrap }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        {{ form.Situacao|bootstrap }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        {{ form.Viabilidade|bootstrap }}
+                    </div>
+                 <button class="btn btn-dark" type="submit">Deletar</button>
+            </div>
+       </div>
+
+    </form>
+</section>
+
+        <footer class="page-footer font-small blue" id="footer1">
+            <div class="footer-copyright text-center py-3">© 2019 Copyright:
+                <a> Hello Ticket</a>
+            </div>
+        </footer>
+
+        <script src="static lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="static lib/jquery/jquery.min.js"></script>
+</body>

@@ -1,0 +1,156 @@
+  {% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>HELLO TICKET</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'style/style.css'%}">
+
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <img id='Logotipo' src="{% static 'imagem/hello-ticket.svg'%}" alt="imagem hello-ticket">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" data-table="order-table">
+
+                 <br><br><br>
+            </form>
+
+        </div>
+    </nav>
+</header>
+
+<section class="container">
+
+
+	<table class="order-table table">
+        <thead class="thead-dark">
+    <tr>
+
+        <th scope="col">Nome</th>
+        <th scope="col">Título da Ideia</th>
+        <th scope="col">Viabilidade</th>
+        <th scope="col">Situação</th>
+        <th scope="col">opções</th>
+
+    </tr>
+  </thead>
+        {% for ideia in ideias %}
+        <tr>
+        <th>
+      {{ideia.Nome}} {{ideia.Sobrenome}}
+        </th>
+                <th id="titid">
+                {{ideia.Nova_ideia}}
+            </th>
+
+             <th>
+                {{ideia.Viabilidade}}
+            </th>
+
+              <th>
+                {{ideia.Situacao}}
+            </th>
+
+            <th>
+
+                 <a href="{% url 'Ideiaupdate' pk=ideia.id %}" id="edt">Editar</a><br>
+                 <a href="{% url 'Ideiadelete' pk=ideia.id %}" id="del">Deletar</a>
+            </th>
+
+
+</tr>
+        {% endfor %}
+  <tbody>
+  </tbody>
+</table>
+
+
+
+
+     <hr>
+
+      <th>
+          <a button type="submit" class="btn btn-dark" href="{% url 'ideiacreate'  %}">Cadastrar nova Ideia</a></button>
+
+      </th>
+
+
+</form>
+</section>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue" id="footer2">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a> Hello Ticket</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<script>
+    (function(document) {
+	'use strict';
+
+	var LightTableFilter = (function(Arr) {
+
+		var _input;
+
+		function _onInputEvent(e) {
+			_input = e.target;
+			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filter);
+				});
+			});
+		}
+
+		function _filter(row) {
+			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+		}
+
+		return {
+			init: function() {
+				var inputs = document.getElementsByClassName('form-control mr-sm-2');
+				Arr.forEach.call(inputs, function(input) {
+					input.oninput = _onInputEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
+</script>
+
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/lib/jquery/jquery.min.js"></script>
+</body>
+</html>
+
+
